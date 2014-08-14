@@ -1,0 +1,89 @@
+.para{
+    margin: 10px 0px 60px 0px;
+}
+
+#endbuffer{
+    height:700px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0px;
+}
+
+.hidden{
+    display:none;
+}
+
+#timeline{
+    width:100%;
+}
+
+.smallfont{
+    font-size:10px;
+}
+
+.cases {
+    fill: steelblue;
+}
+
+.deaths {
+    fill: red;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.barlabel{
+    font: 12px sans-serif;
+}
+
+.highlightedpara{
+    border-left-color:#999999;
+    border-left-style:solid;
+    border-width:3px;
+}
+
+.Country {
+  stroke: white;
+  stroke-width: 1px;
+}
+
+.Region {
+  stroke: white;
+  stroke-width: 1px;
+}
+
+#Sierra_Leone {
+  stroke: black;
+  stroke-width: 1px;
+}
+
+ #Nigeria {
+  stroke: black;
+  stroke-width: 1px;
+}
+ 
+ #Liberia {
+  stroke: black;
+  stroke-width: 1px;
+}
+ 
+ #Guinea {
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.maplabel{
+    font: 14px sans-serif;
+    fill: #666666;
+    font-weight: bold;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>How the Ebola Outbreak Spread Across West Africa</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/site.css"/>
+        <script src="js/jquery.js"></script>
+        <script src="data/data.js"></script>
+        <script src="data/data_vis_map.js"></script>
+        <script src="js/d3.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div id="topbar" class="col-sm-12">
+                    <h1>How the Ebola Outbreak Spread Across West Africa</h1>
+                    <p>Created by Simon Johnson - Twitter: <a href="https://twitter.com/Simon_B_Johnson">@simon_b_johnson</a>
+                        - Sources: <a href="http://www.thewire.com/global/2014/07/how-the-ebola-outbreak-spread-across-west-africa/375231/">The Wire</a>,
+                        <a href="http://en.wikipedia.org/wiki/2014_West_Africa_Ebola_outbreak">Wikipedia</a>, Local Government
+                    </p>
+                </div>    
+            </div>            
+            <div class="row">                
+                <div class="col-sm-6">
+                    <div id="sticky-anchor"></div>
+                    <div id="info-graphic">
+                        <h4>Time line</h4>
+                        <div id="timeline"></div>
+                        <h4 id="barcharttitle">Confirmed Deaths and Cases - 15/01/2014</h4>
+                        <div id="barchart"></div>
+                        <h4>Map</h4>
+                        <div id="map"></div>                        
+                    </div>
+                </div>
+                <div id="text" class="col-sm-6"></div>
+                <div id="browse">
+                    <div id="Previous" class="col-xs-3 col-xs-offset-3">
+                        Previous
+                    </div>
+                    <div id="Next" class="col-xs-3 col-xs-3">
+                        Next
+                    </div>                    
+                </div>
+            </div>            
+        </div>    
+        <script src="js/info_narrative.js"></script>        
+    </body>
+</html>
