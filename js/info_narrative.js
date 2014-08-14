@@ -62,10 +62,9 @@ function generateTimeline(id,data){
             .attr("y2", 40)
             .attr("stroke-width", 1)
             .attr("stroke", "black");                 
-                 
-                 
-                 
-                 
+
+
+
     svg.append("line")
         .attr("x1", 5)
         .attr("y1", 30)
@@ -84,7 +83,7 @@ function generateTimeline(id,data){
         .attr("cy", function(d) {
              return 30;
         })
-        .attr("r", 5)
+        .attr("r", 3.5)
         .attr("id",function(d,i){return "time_"+i;})
         .attr("pos",function(d,i){return i;})
         .attr("fill","#999999")
@@ -102,7 +101,8 @@ function generateTimeline(id,data){
         })
         .attr("r", 10)
         .attr("id","selectedcircle")
-        .attr("fill","#999999");
+        .attr("opacity","0.5")
+        .attr("fill","#4682B4");
         
     
         
