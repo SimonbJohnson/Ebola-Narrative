@@ -18,12 +18,15 @@ function generateTimeline(id,data){
             .append("g")
             .attr("transform", "translate(" + 10 + ",0)");
     
-    var format = d3.time.format("%d/%m/%y");
-    
+    var format = d3.time.format("%d/%m/%Y");
+    console.log (data[0]['date']);
+    console.log (data[27]['date']);
+    console.log (format.parse(data[0]['date']));
+    console.log (format.parse(data[27]['date']));
     var scale = d3.time.scale()
             .range([0, width-50])
             .domain([format.parse(data[0]['date']),
-                     format.parse(data[data.length-1]['date'])]);
+                     format.parse(data[27]['date'])]);//changed data.length-1] to 27
                  
     var months = [
         {"date":"01/02/14","Month":"Feb"},
@@ -89,7 +92,7 @@ function generateTimeline(id,data){
         .attr("fill","#999999")
         .on("click",function(){
             if(compact){
-                showParagraph(parseInt($(this).attr('pos')),24);
+                showParagraph(parseInt($(this).attr('pos')),28);
                 updateinfographic(parseInt($(this).attr('pos')));
             }
         });
@@ -126,18 +129,19 @@ function generateTimeline(id,data){
 }
 
 function generateBarChart(id,datain){
-    
+    console.log(datain);//checking
     var data = new Array();
     datain["DeathsandCases"].forEach(function(d) {
         data=data.concat([d['Deaths'],d['Cases']]);
     });
+        console.log(data);//checking
     var margin = {top: 20, right: 30, bottom: 20, left: 130},
     width = $(id).width() - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;    
     var barHeight = (height)/data.length-10;   
 
     var x = d3.scale.linear()
-        .domain([0,700])
+        .domain([0, 1500])//This is the hard-coded maximum value for x axis of graph. We aim to write code to find this.
         .range([0, width]);
 
     var svg  = d3.select(id)
@@ -281,7 +285,7 @@ function highlighttimeline(id,num){
     var width = $(id).width()-10;
     var height = 100;
 
-    var format = d3.time.format("%d/%m/%y");    
+    var format = d3.time.format("%d/%m/%Y");    
     
     var scale = d3.time.scale()
             .range([0, width-50])
@@ -299,11 +303,11 @@ function highlighttimeline(id,num){
 function highlightmap(num){
     var d = data[num].RegionDeaths;
     d.forEach(function(element){
-               d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,250)); 
+               d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,300)); 
             });
 }
 
-function numtohex(num,limit){
+function numtohex(num,limit){//This is the thing for Jade to change
     limit=limit+75;
     if(num>0){num=num*1+75;}
     //red=Math.round((num)/limit*50)+253;
@@ -390,7 +394,7 @@ function transitionBarChart(id,datain){
     var barHeight = (height)/data.length-10;
     
     var x = d3.scale.linear()
-        .domain([0,700])
+        .domain([0,1500])
         .range([0, width]);
 
     d3.select(id).selectAll("rect")
@@ -429,7 +433,7 @@ function resizedw(){
         currentpara=-1;
         updateinfographic(temppara);
         if(compact){
-            showParagraph(temppara,24);
+            showParagraph(temppara,28);
             $('html, body').animate({
                 scrollTop: 0
             }, 500);
@@ -464,12 +468,12 @@ updateinfographic(0);
 $(window).scroll(function(){
     if(!compact){
         stickydiv();
-        updateinfographic(getParagraphInView(24,220));
+        updateinfographic(getParagraphInView(28,220));
     }
 });
 
 if(compact){    
-    showParagraph(0,24);
+    showParagraph(0,28);
 } else {
     $('#browse').hide();
 };
@@ -483,14 +487,14 @@ window.onresize = function(){
 
 $('#Next').on("click",function(){
     if(currentpara<23){
-        showParagraph(currentpara+1,24);
+        showParagraph(currentpara+1,28);
         updateinfographic(currentpara+1);
     }
 });
 
 $('#Previous').on("click",function(){
     if(currentpara>0){
-        showParagraph(currentpara-1,24);
+        showParagraph(currentpara-1,28);
         updateinfographic(currentpara-1);
     }
 });
