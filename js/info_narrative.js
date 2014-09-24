@@ -35,7 +35,8 @@ function generateTimeline(id,data){
         {"date":"01/05/14","Month":"May"},
         {"date":"01/06/14","Month":"Jun"},
         {"date":"01/07/14","Month":"Jul"},
-        {"date":"01/08/14","Month":"Aug"}];
+        {"date":"01/08/14","Month":"Aug"},
+        {"date":"01/09/14","Month":"Sep"}];
         
     svg.selectAll("g1")
         .data(months)
