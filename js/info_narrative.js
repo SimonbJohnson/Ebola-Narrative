@@ -22,7 +22,7 @@ function generateTimeline(id,data){
     console.log (data[0]['date']);
     console.log (data[33]['date']);
     console.log (format.parse(data[0]['date']));
-    console.log (format.parse(data[34]['date']));
+    console.log (format.parse(data[33]['date']));
     var scale = d3.time.scale()
             .range([0, width-50])
             .domain([format.parse(data[0]['date']),
