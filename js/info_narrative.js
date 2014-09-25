@@ -18,24 +18,12 @@ function generateTimeline(id,data){
             .append("g")
             .attr("transform", "translate(" + 10 + ",0)");
     
-<<<<<<< HEAD
-    var format = d3.time.format("%d/%m/%Y");
-    console.log (data[0]['date']);
-    console.log (data[33]['date']);
-    console.log (format.parse(data[0]['date']));
-    console.log (format.parse(data[33]['date']));
-    var scale = d3.time.scale()
-            .range([0, width-50])
-            .domain([format.parse(data[0]['date']),
-                     format.parse(data[33]['date'])]);//changed data.length-1] to 34
-=======
     var format = d3.time.format("%d/%m/%y");
     
     var scale = d3.time.scale()
             .range([0, width-50])
             .domain([format.parse(data[0]['date']),
                      format.parse(data[data.length-1]['date'])]);
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
                  
     var months = [
         {"date":"01/02/14","Month":"Feb"},
@@ -102,11 +90,7 @@ function generateTimeline(id,data){
         .attr("fill","#999999")
         .on("click",function(){
             if(compact){
-<<<<<<< HEAD
-                showParagraph(parseInt($(this).attr('pos')),34);
-=======
                 showParagraph(parseInt($(this).attr('pos')),24);
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
                 updateinfographic(parseInt($(this).attr('pos')));
             }
         });
@@ -154,11 +138,7 @@ function generateBarChart(id,datain){
     var barHeight = (height)/data.length-10;   
 
     var x = d3.scale.linear()
-<<<<<<< HEAD
-        .domain([0, 3500])//This is the hard-coded maximum value for x axis of graph. We aim to write code to find this.
-=======
         .domain([0,700])
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
         .range([0, width]);
 
     var svg  = d3.select(id)
@@ -320,11 +300,7 @@ function highlighttimeline(id,num){
 function highlightmap(num){
     var d = data[num].RegionDeaths;
     d.forEach(function(element){
-<<<<<<< HEAD
-               d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,1300)); 
-=======
                d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,250)); 
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
             });
 }
 
@@ -415,11 +391,7 @@ function transitionBarChart(id,datain){
     var barHeight = (height)/data.length-10;
     
     var x = d3.scale.linear()
-<<<<<<< HEAD
-        .domain([0,3500])
-=======
         .domain([0,700])
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
         .range([0, width]);
 
     d3.select(id).selectAll("rect")
@@ -458,11 +430,7 @@ function resizedw(){
         currentpara=-1;
         updateinfographic(temppara);
         if(compact){
-<<<<<<< HEAD
-            showParagraph(temppara,34);
-=======
             showParagraph(temppara,24);
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
             $('html, body').animate({
                 scrollTop: 0
             }, 500);
@@ -497,20 +465,12 @@ updateinfographic(0);
 $(window).scroll(function(){
     if(!compact){
         stickydiv();
-<<<<<<< HEAD
-        updateinfographic(getParagraphInView(34,220));
-=======
         updateinfographic(getParagraphInView(24,220));
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
     }
 });
 
 if(compact){    
-<<<<<<< HEAD
-    showParagraph(0,34);
-=======
     showParagraph(0,24);
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
 } else {
     $('#browse').hide();
 };
@@ -523,24 +483,15 @@ window.onresize = function(){
 };
 
 $('#Next').on("click",function(){
-<<<<<<< HEAD
-    if(currentpara<34){
-        showParagraph(currentpara+1,34);
-=======
     if(currentpara<23){
         showParagraph(currentpara+1,24);
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
         updateinfographic(currentpara+1);
     }
 });
 
 $('#Previous').on("click",function(){
     if(currentpara>0){
-<<<<<<< HEAD
-        showParagraph(currentpara-1,34);
-=======
         showParagraph(currentpara-1,24);
->>>>>>> parent of 52ec5a5... Merge pull request #6 from acrossthesound/master
         updateinfographic(currentpara-1);
     }
 });
