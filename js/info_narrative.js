@@ -395,7 +395,7 @@ function transitionBarChart(id,datain){
     var barHeight = (height)/data.length-10;
     
     var x = d3.scale.linear()
-        .domain([0,1500])
+        .domain([0,3500])
         .range([0, width]);
 
     d3.select(id).selectAll("rect")
