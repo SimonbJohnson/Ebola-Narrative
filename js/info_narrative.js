@@ -20,7 +20,7 @@ function generateTimeline(id,data){
     
     var format = d3.time.format("%d/%m/%Y");
     console.log (data[0]['date']);
-    console.log (data[34]['date']);
+    console.log (data[33]['date']);
     console.log (format.parse(data[0]['date']));
     console.log (format.parse(data[34]['date']));
     var scale = d3.time.scale()
