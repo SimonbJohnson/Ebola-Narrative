@@ -20,13 +20,13 @@ function generateTimeline(id,data){
     
     var format = d3.time.format("%d/%m/%Y");
     console.log (data[0]['date']);
-    console.log (data[27]['date']);
+    console.log (data[33]['date']);
     console.log (format.parse(data[0]['date']));
-    console.log (format.parse(data[27]['date']));
+    console.log (format.parse(data[33]['date']));
     var scale = d3.time.scale()
             .range([0, width-50])
             .domain([format.parse(data[0]['date']),
-                     format.parse(data[27]['date'])]);//changed data.length-1] to 27
+                     format.parse(data[33]['date'])]);//changed data.length-1] to 34
                  
     var months = [
         {"date":"01/02/14","Month":"Feb"},
@@ -35,7 +35,8 @@ function generateTimeline(id,data){
         {"date":"01/05/14","Month":"May"},
         {"date":"01/06/14","Month":"Jun"},
         {"date":"01/07/14","Month":"Jul"},
-        {"date":"01/08/14","Month":"Aug"}];
+        {"date":"01/08/14","Month":"Aug"},
+        {"date":"01/09/14","Month":"Sep"}];
         
     svg.selectAll("g1")
         .data(months)
@@ -92,7 +93,7 @@ function generateTimeline(id,data){
         .attr("fill","#999999")
         .on("click",function(){
             if(compact){
-                showParagraph(parseInt($(this).attr('pos')),28);
+                showParagraph(parseInt($(this).attr('pos')),34);
                 updateinfographic(parseInt($(this).attr('pos')));
             }
         });
@@ -141,7 +142,7 @@ function generateBarChart(id,datain){
     var barHeight = (height)/data.length-10;   
 
     var x = d3.scale.linear()
-        .domain([0, 1500])//This is the hard-coded maximum value for x axis of graph. We aim to write code to find this.
+        .domain([0, 3500])//This is the hard-coded maximum value for x axis of graph. We aim to write code to find this.
         .range([0, width]);
 
     var svg  = d3.select(id)
@@ -303,7 +304,7 @@ function highlighttimeline(id,num){
 function highlightmap(num){
     var d = data[num].RegionDeaths;
     d.forEach(function(element){
-               d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,300)); 
+               d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,1300)); 
             });
 }
 
@@ -394,7 +395,7 @@ function transitionBarChart(id,datain){
     var barHeight = (height)/data.length-10;
     
     var x = d3.scale.linear()
-        .domain([0,1500])
+        .domain([0,3500])
         .range([0, width]);
 
     d3.select(id).selectAll("rect")
@@ -433,7 +434,7 @@ function resizedw(){
         currentpara=-1;
         updateinfographic(temppara);
         if(compact){
-            showParagraph(temppara,28);
+            showParagraph(temppara,34);
             $('html, body').animate({
                 scrollTop: 0
             }, 500);
@@ -468,12 +469,12 @@ updateinfographic(0);
 $(window).scroll(function(){
     if(!compact){
         stickydiv();
-        updateinfographic(getParagraphInView(28,220));
+        updateinfographic(getParagraphInView(34,220));
     }
 });
 
 if(compact){    
-    showParagraph(0,28);
+    showParagraph(0,34);
 } else {
     $('#browse').hide();
 };
@@ -486,15 +487,15 @@ window.onresize = function(){
 };
 
 $('#Next').on("click",function(){
-    if(currentpara<23){
-        showParagraph(currentpara+1,28);
+    if(currentpara<34){
+        showParagraph(currentpara+1,34);
         updateinfographic(currentpara+1);
     }
 });
 
 $('#Previous').on("click",function(){
     if(currentpara>0){
-        showParagraph(currentpara-1,28);
+        showParagraph(currentpara-1,34);
         updateinfographic(currentpara-1);
     }
 });
