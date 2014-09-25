@@ -26,7 +26,7 @@ function generateTimeline(id,data){
     var scale = d3.time.scale()
             .range([0, width-50])
             .domain([format.parse(data[0]['date']),
-                     format.parse(data[34]['date'])]);//changed data.length-1] to 34
+                     format.parse(data[33]['date'])]);//changed data.length-1] to 34
                  
     var months = [
         {"date":"01/02/14","Month":"Feb"},
