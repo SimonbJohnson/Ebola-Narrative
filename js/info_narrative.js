@@ -20,13 +20,13 @@ function generateTimeline(id,data){
     
     var format = d3.time.format("%d/%m/%Y");
     console.log (data[0]['date']);
-    console.log (data[33]['date']);
+    console.log (data[34]['date']);
     console.log (format.parse(data[0]['date']));
-    console.log (format.parse(data[33]['date']));
+    console.log (format.parse(data[34]['date']));
     var scale = d3.time.scale()
             .range([0, width-50])
             .domain([format.parse(data[0]['date']),
-                     format.parse(data[33]['date'])]);//changed data.length-1] to 33
+                     format.parse(data[34]['date'])]);//changed data.length-1] to 34
                  
     var months = [
         {"date":"01/02/14","Month":"Feb"},
@@ -93,7 +93,7 @@ function generateTimeline(id,data){
         .attr("fill","#999999")
         .on("click",function(){
             if(compact){
-                showParagraph(parseInt($(this).attr('pos')),33);
+                showParagraph(parseInt($(this).attr('pos')),34);
                 updateinfographic(parseInt($(this).attr('pos')));
             }
         });
@@ -434,7 +434,7 @@ function resizedw(){
         currentpara=-1;
         updateinfographic(temppara);
         if(compact){
-            showParagraph(temppara,33);
+            showParagraph(temppara,34);
             $('html, body').animate({
                 scrollTop: 0
             }, 500);
@@ -469,12 +469,12 @@ updateinfographic(0);
 $(window).scroll(function(){
     if(!compact){
         stickydiv();
-        updateinfographic(getParagraphInView(33,220));
+        updateinfographic(getParagraphInView(34,220));
     }
 });
 
 if(compact){    
-    showParagraph(0,33);
+    showParagraph(0,34);
 } else {
     $('#browse').hide();
 };
@@ -487,15 +487,15 @@ window.onresize = function(){
 };
 
 $('#Next').on("click",function(){
-    if(currentpara<33){
-        showParagraph(currentpara+1,33);
+    if(currentpara<34){
+        showParagraph(currentpara+1,34);
         updateinfographic(currentpara+1);
     }
 });
 
 $('#Previous').on("click",function(){
     if(currentpara>0){
-        showParagraph(currentpara-1,33);
+        showParagraph(currentpara-1,34);
         updateinfographic(currentpara-1);
     }
 });
