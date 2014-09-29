@@ -18,12 +18,16 @@ function generateTimeline(id,data){
             .append("g")
             .attr("transform", "translate(" + 10 + ",0)");
     
-    var format = d3.time.format("%d/%m/%y");
+    var format = d3.time.format("%d/%m/%Y");
     
+    
+    console.log (format.parse(data[0]['date']));
+    console.log (format.parse(data[33]['date']));    
     var scale = d3.time.scale()
-            .range([0, width-50])
+            .range([0, width-50])    
             .domain([format.parse(data[0]['date']),
-                     format.parse(data[data.length-1]['date'])]);
+                    format.parse(data[33]['date'])]);
+
                  
     var months = [
         {"date":"01/02/14","Month":"Feb"},
@@ -90,7 +94,7 @@ function generateTimeline(id,data){
         .attr("fill","#999999")
         .on("click",function(){
             if(compact){
-                showParagraph(parseInt($(this).attr('pos')),24);
+                showParagraph(parseInt($(this).attr('pos')),34);
                 updateinfographic(parseInt($(this).attr('pos')));
             }
         });
@@ -138,7 +142,7 @@ function generateBarChart(id,datain){
     var barHeight = (height)/data.length-10;   
 
     var x = d3.scale.linear()
-        .domain([0,700])
+        .domain([0,3500])
         .range([0, width]);
 
     var svg  = d3.select(id)
@@ -282,12 +286,12 @@ function highlighttimeline(id,num){
     var width = $(id).width()-10;
     var height = 100;
 
-    var format = d3.time.format("%d/%m/%y");    
+    var format = d3.time.format("%d/%m/%Y");    
     
     var scale = d3.time.scale()
             .range([0, width-50])
             .domain([format.parse(data[0]['date']),
-                     format.parse(data[data.length-1]['date'])]);    
+                     format.parse(data[33]['date'])]);    
        
     d3.select('#selectedcircle')
         .transition()
@@ -300,7 +304,7 @@ function highlighttimeline(id,num){
 function highlightmap(num){
     var d = data[num].RegionDeaths;
     d.forEach(function(element){
-               d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,250)); 
+               d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,1250)); 
             });
 }
 
@@ -391,7 +395,7 @@ function transitionBarChart(id,datain){
     var barHeight = (height)/data.length-10;
     
     var x = d3.scale.linear()
-        .domain([0,700])
+        .domain([0,3500])
         .range([0, width]);
 
     d3.select(id).selectAll("rect")
@@ -430,7 +434,7 @@ function resizedw(){
         currentpara=-1;
         updateinfographic(temppara);
         if(compact){
-            showParagraph(temppara,24);
+            showParagraph(temppara,34);
             $('html, body').animate({
                 scrollTop: 0
             }, 500);
@@ -465,12 +469,12 @@ updateinfographic(0);
 $(window).scroll(function(){
     if(!compact){
         stickydiv();
-        updateinfographic(getParagraphInView(24,220));
+        updateinfographic(getParagraphInView(34,220));
     }
 });
 
 if(compact){    
-    showParagraph(0,24);
+    showParagraph(0,34);
 } else {
     $('#browse').hide();
 };
@@ -483,15 +487,15 @@ window.onresize = function(){
 };
 
 $('#Next').on("click",function(){
-    if(currentpara<23){
-        showParagraph(currentpara+1,24);
+    if(currentpara<34){
+        showParagraph(currentpara+1,34);
         updateinfographic(currentpara+1);
     }
 });
 
 $('#Previous').on("click",function(){
     if(currentpara>0){
-        showParagraph(currentpara-1,24);
+        showParagraph(currentpara-1,34);
         updateinfographic(currentpara-1);
     }
 });
