@@ -305,7 +305,7 @@ function highlighttimeline(id,num){
 function highlightmap(num){
     var d = data[num].RegionDeaths;
     d.forEach(function(element){
-               d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,1250)); 
+               d3.select("#"+element.Region.split(' ').join('_')).transition().attr("fill",numtohex(element.Deaths,2100)); 
             });
 }
 
