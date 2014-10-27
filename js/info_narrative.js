@@ -143,7 +143,7 @@ function generateBarChart(id,datain){
     var barHeight = (height)/data.length-10;   
 
     var x = d3.scale.linear()
-        .domain([0,3500])
+        .domain([0,5000])
         .range([0, width]);
 
     var svg  = d3.select(id)
@@ -396,7 +396,7 @@ function transitionBarChart(id,datain){
     var barHeight = (height)/data.length-10;
     
     var x = d3.scale.linear()
-        .domain([0,3500])
+        .domain([0,5000])
         .range([0, width]);
 
     d3.select(id).selectAll("rect")
