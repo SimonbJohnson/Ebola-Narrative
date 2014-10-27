@@ -310,20 +310,42 @@ function highlightmap(num){
 }
 
 function numtohex(num,limit){
-    limit=limit+75;
-    if(num>0){num=num*1+75;}
-    //red=Math.round((num)/limit*50)+253;
-    red=253;
-    bluegreen = 253-Math.round((num)/limit*253);
-    redhex = red.toString(16);
-    if(redhex.length===1){
-        redhex="0"+redhex;
+    var color;
+    if(num==0){
+        color="#ffffff";
     }
-    bluegreenhex = bluegreen.toString(16);
-    if(bluegreenhex.length===1){
-        bluegreenhex="0"+bluegreenhex;
+    else if(num<50){
+        color="#fde0dc";
     }
-    return "#"+redhex+bluegreenhex+bluegreenhex;
+    else if(num<150){
+        color="#f9bdbb";
+    }
+    else if(num<250){
+        color="#f69988";
+    }
+    else if(num<400){
+        color="#f36c60";
+    }
+    else if(num<460){
+        color="#e84e40";
+    }
+    else if(num<500){
+        color="#e51c23";
+    }
+    else if(num<550){
+        color="#dd191d";
+    }
+    else if(num<600){
+        color="#d01716";
+    }
+    else if(num<850){
+        color="#c41411";
+    }
+    else if(num<2100){
+        color="#b0120a";
+    }
+    return color;
+
 }
             
 /////////////////////////////////////
